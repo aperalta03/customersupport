@@ -1,0 +1,34 @@
+/* Main Container */
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: center;
+    height: 110vh;
+    width: 100%;
+    gap: 5vw;
+
+}
+/* Content */
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+.carouselContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 20%;
+}
+/* Logout Button */
+.logoutButton {
+    margin-top: 20px;
+    background-color: var(--primary-color);
+}
+.logoutButton:hover {
+    background-color: var(--primaryfade-color);
+}
+  
