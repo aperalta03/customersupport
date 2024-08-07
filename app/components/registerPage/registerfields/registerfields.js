@@ -1,7 +1,7 @@
 // app/components/registerPage/registerFields/RegisterFields.js
 import React from 'react';
 import { Box, TextField } from '@mui/material';
-import styles from './registerFields.module.css';
+import styles from './registerfields.module.css';
 
 const RegisterFields = ({ email, setEmail, password, setPassword }) => {
   return (
