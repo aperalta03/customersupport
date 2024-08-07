@@ -1,0 +1,7 @@
+.deleteButton {
+    margin-left: 20px;
+    background-color: var(--primary-color);
+}  
+.deleteButton:hover {
+    background-color: var(--primaryfade-color);
+}

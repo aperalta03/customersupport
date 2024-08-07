@@ -5,7 +5,6 @@ import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../app/firebase';
 import ContentLogin from '../app/components/loginPage/contentLogin';
 import styles from './login.module.css';
-import Footer from '../app/components/footer/footer';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +18,7 @@ const LoginPage = () => {
       router.push('/chatbot');
     } catch (error) {
       setError('Failed to log in. Please check your credentials.');
-      console.error('Error during login', error);
+      console.error('Error during email login:', error);
     }
   };
 
@@ -28,8 +27,17 @@ const LoginPage = () => {
       await signInWithPopup(auth, googleProvider);
       router.push('/chatbot');
     } catch (error) {
-      setError('Failed to log in with Google.');
-      console.error('Error during Google login', error);
+      if (error.code === 'auth/popup-closed-by-user') {
+        // Notify user that they closed the popup
+        setError('Sign-in popup was closed. Please try again.');
+      } else if (error.code === 'auth/cancelled-popup-request') {
+        // Handle a cancelled popup request
+        setError('Sign-in was canceled. Please try again.');
+      } else {
+        // Handle other errors
+        setError('Failed to log in with Google.');
+      }
+      console.error('Error during Google login:', error);
     }
   };
 

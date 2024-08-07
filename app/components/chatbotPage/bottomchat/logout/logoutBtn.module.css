@@ -1,0 +1,7 @@
+.logoutButton {
+    margin-right: 10px;
+    background-color: var(--primary-color);
+}  
+.logoutButton:hover {
+    background-color: var(--primaryfade-color);
+}

@@ -6,12 +6,14 @@ const openai = new OpenAI({
 });
 
 export async function POST(req) {
-  const { prompt } = await req.json();
+  const { prompt, context } = await req.json();
+
+  const finalPrompt = context ? `${context}\n\nUser: ${prompt}` : `User: ${prompt}`;
 
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }],
+      messages: [{ role: "user", content: finalPrompt }],
       max_tokens: 150,
     });
 

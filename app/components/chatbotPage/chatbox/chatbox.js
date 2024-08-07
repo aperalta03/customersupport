@@ -1,89 +1,38 @@
-import React, { useState } from 'react';
-import { Box, TextField, Button, Typography } from '@mui/material';
+// components/chatbox/Chatbox.js
+import React, { useEffect, useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { db, auth } from '../../../firebase'; // Ensure your Firebase setup exports db and auth
+import Messages from './messages/messages';
+import Input from './input/input';
 import styles from './chatbox.module.css';
 
 const Chatbox = () => {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
 
-  const handleSendMessage = async () => {
-    if (input.trim() === "") return;
+  useEffect(() => {
+    const fetchMessages = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const chatHistoryRef = collection(db, 'users', user.uid, 'chatHistory');
+        const q = query(chatHistoryRef, orderBy('timestamp', 'asc'));
+        const querySnapshot = await getDocs(q);
 
-    const newMessages = [...messages, { sender: "user", text: input }];
-    setMessages(newMessages);
-    setInput("");
+        const fetchedMessages = querySnapshot.docs.map(doc => doc.data());
+        setMessages(fetchedMessages);
+      }
+    };
 
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt: input }),
-      });
-
-      const data = await response.json();
-      setMessages([...newMessages, { sender: "bot", text: data.botMessage }]);
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
-  };
+    fetchMessages();
+  }, []);
 
   return (
     <Box className={styles.chatContainer}>
-        <Box className={styles.backgroundTextContainer}>
-            <Typography className={styles.backgroundText}>Support.ai</Typography>
-        </Box>
-        <Box className={styles.messagesContainer}>
-            {messages.map((msg, index) => (
-            <Typography
-                key={index}
-                className={msg.sender === "user" ? styles.userMessage : styles.botMessage}
-            >
-                {msg.text}
-            </Typography>
-            ))}
-        </Box>
-        <Box className={styles.inputContainer}>
-            <TextField
-            className={styles.inputBox}
-            placeholder="Type a message"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-            fullWidth
-            sx={{
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'rgba(18, 131, 48, 0.7)',
-                  },
-                  '&:hover fieldset': {
-                    borderColor: 'rgba(18, 131, 48, 0.7)',
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'rgb(4, 143, 34)',
-                  },
-                },
-                '& .MuiInputLabel-root': {
-                  color: 'white', 
-                },
-                '& .MuiInputLabel-root.Mui-focused': {
-                  color: 'rgb(4, 143, 34)', 
-                },
-                '& .MuiInputBase-input': {
-                  color: '#ccc',
-                  '&::placeholder': {
-                    color: 'white', 
-                    fontFamily: 'Courier New, monospace',
-                    opacity: 1,
-                  },
-                },
-              }}
-            />
-            <Button onClick={handleSendMessage} className={styles.sendButton}>
-                Send
-            </Button>
-        </Box>
+      <Box className={styles.backgroundTextContainer}>
+        <Typography className={styles.backgroundText}>Support.ai</Typography>
+      </Box>
+      <Messages messages={messages} />
+      <Input messages={messages} setMessages={setMessages} />
     </Box>
   );
 };
