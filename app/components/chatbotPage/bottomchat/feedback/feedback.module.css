@@ -1,6 +1,6 @@
 .feedbackButton {
-    margin-left: 10px;
     background-color: var(--primary-color);
+    width: 200px;
 }  
 .feedbackButton:hover {
     background-color: var(--primaryfade-color);

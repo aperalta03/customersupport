@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Box, TextField, Button } from '@mui/material';
 import { collection, addDoc } from 'firebase/firestore';
 import { db, auth } from '../../../../firebase';
+import DeleteBtn from '../../bottomchat/delete/deleteBtn';
 import styles from './input.module.css';
 
 const Input = ({ messages, setMessages }) => {
@@ -85,6 +86,7 @@ const Input = ({ messages, setMessages }) => {
       <Button onClick={handleSendMessage} className={styles.sendButton}>
         Send
       </Button>
+      <DeleteBtn />
     </Box>
   );
 };

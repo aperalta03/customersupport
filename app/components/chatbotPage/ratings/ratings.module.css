@@ -3,7 +3,7 @@
     width: 100%; /* Adjust width for feedback carousel */
     overflow: hidden;
     position: relative;
-    height: 600px;
+    height: 100%;
     background-color: transparent;
     padding: 10px;
 }
@@ -16,7 +16,7 @@
 .logosSlide {
     display: flex;
     flex-direction: column;
-    animation: slide 20s linear infinite;
+    animation: slide 60s linear infinite;
 }
 .feedbackCard {
     background-color: white;

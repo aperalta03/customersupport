@@ -1,13 +1,12 @@
 /* Main Container */
 .chatContainer {
+    flex-grow: 1;
     position: relative;
-    height: 80vh;
-    width: 100%;
-    margin: 0 auto;
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
+    height: 100%;
+    margin: 0;
+    border-right: 2px solid var(--primary-color);
     background-color: var(--background-color);
-    box-shadow: 0 0px 40px var(--primaryfade-color);
+    box-shadow: 0 0px 20px var(--primaryfade-color);
     overflow: hidden;
 }  
 .chatContainer:before {
