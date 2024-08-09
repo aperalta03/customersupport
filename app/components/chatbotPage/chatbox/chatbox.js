@@ -1,6 +1,7 @@
 // components/chatbox/Chatbox.js
 import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
+import Image from 'next/image';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db, auth } from '../../../firebase'; // Ensure your Firebase setup exports db and auth
 import Messages from './messages/messages';
@@ -32,7 +33,7 @@ const Chatbox = () => {
           <Typography className={styles.backgroundText}>
             Robinhood.ai
           </Typography>
-          <img src="/_next/static/media/robinhoodlogo.27f420a9.png" alt="Robinhood" className={styles.logo} />
+          <Image src="/robinhood.png" alt="Robinhood" className={styles.logo} width={50} height={50}/>
       </Box>
       <Messages messages={messages} />
       <Input messages={messages} setMessages={setMessages} />

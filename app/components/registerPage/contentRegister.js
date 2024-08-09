@@ -1,6 +1,7 @@
 // app/components/registerPage/ContentRegister.js
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import Image from 'next/image';
 import RegisterFields from './registerfields/registerfields';
 import Buttons from './buttons/buttons';
 import Footer from '../footer/footer';
@@ -14,7 +15,7 @@ const ContentRegister = ({ email, setEmail, password, setPassword, error, handle
           <Typography className={styles.title}>
             Robinhood.ai
           </Typography>
-          <img src="/_next/static/media/robinhoodlogo.27f420a9.png" alt="Robinhood" className={styles.logo} />
+          <Image src="/_next/static/media/robinhoodlogo.27f420a9.png" alt="Robinhood" className={styles.logo} width={50} height={50}/>
         </Box>
         <RegisterFields 
           email={email} 
