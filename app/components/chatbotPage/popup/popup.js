@@ -12,11 +12,17 @@ const Popup = ({ open, handleClose }) => {
       aria-describedby="welcome-modal-description"
     >
       <Box className={styles.modalContent}>
-        <Typography id="welcome-modal-title" variant="h6" component="h2">
-          Welcome to Support.ai
+        <Typography id="welcome-modal-title" variant="h6" component="h2" className={styles.textTitle}>
+          Welcome to Robinhood.ai
         </Typography>
-        <Typography id="welcome-modal-description" sx={{ mt: 2 }}>
-          This chatbot is designed to assist you with your queries. You can ask about the services we provide, request support, or simply explore the capabilities of our AI.
+        <Typography id="welcome-modal-description" className={styles.text}>
+          This chatbot is meant to give you financial advise on your day to day decisions.
+        </Typography>
+        <Typography id="welcome-modal-description" className={styles.text}>
+          To ask for advice use keyword 'ADVICE' in the beginning of your query. Ex. ADVICE - ...
+        </Typography>
+        <Typography id="welcome-modal-description" className={styles.text}>
+          It can also fetch company data using the ticker symbol and keyword 'MARKET'. Ex. MARKET - AAPL
         </Typography>
         <Button onClick={handleClose} className={styles.closeButton}>
           Got it!

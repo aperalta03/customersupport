@@ -1,16 +1,17 @@
 /* Modal */
 .modalContent {
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 35%;
     transform: translate(-50%, -50%);
     width: 400px;
-    background-color: #fff;
+    background-color: #171717;
     border: 2px solid var(--primary-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0px 20px var(--primaryfade-color);
     padding: 20px;
     outline: none;
+    color: var(--text-color);
     opacity: 0;
     animation: fadeInFromMiddle 1s ease-out forwards;
 }
@@ -23,6 +24,20 @@
       opacity: 1;
       transform: scale(1);
     }
+}
+/* Text */
+.textTitle {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 23px;
+  font-weight: 550;
+  font-style: italic;
+  margin: 5px;
+}
+.text {
+    color: var(--text-color);
+    margin: 5px;
+    font-family: var(--font-family);
 }
 /* Buttons */
 .closeButton {

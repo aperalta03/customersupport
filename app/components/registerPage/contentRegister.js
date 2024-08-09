@@ -10,9 +10,12 @@ const ContentRegister = ({ email, setEmail, password, setPassword, error, handle
   return (
     <>
       <Box className={styles.contentContainer}>
-        <Typography className={styles.title}>
-          Register
-        </Typography>
+        <Box className={styles.titleContainer}>
+          <Typography className={styles.title}>
+            Robinhood.ai
+          </Typography>
+          <img src="/_next/static/media/robinhoodlogo.27f420a9.png" alt="Robinhood" className={styles.logo} />
+        </Box>
         <RegisterFields 
           email={email} 
           setEmail={setEmail} 

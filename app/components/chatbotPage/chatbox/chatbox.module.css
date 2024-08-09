@@ -30,6 +30,7 @@
     align-items: center;
     justify-content: center;
     z-index: 0;
+    gap: 50px;
 }
 .backgroundText {
     color: var(--text-color);
@@ -38,4 +39,9 @@
     font-family: var(--font-family);
     font-style: italic;
     pointer-events: none;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
 }

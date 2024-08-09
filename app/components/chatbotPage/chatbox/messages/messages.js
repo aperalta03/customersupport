@@ -1,9 +1,16 @@
-// components/chatbox/Messages.js
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Typography, Box } from '@mui/material';
 import styles from './messages.module.css';
 
 const Messages = ({ messages }) => {
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
+
   return (
     <Box className={styles.messagesContainer}>
       {messages.map((msg, index) => (
@@ -14,6 +21,7 @@ const Messages = ({ messages }) => {
           {msg.text}
         </Typography>
       ))}
+      <div ref={messagesEndRef} />
     </Box>
   );
 };

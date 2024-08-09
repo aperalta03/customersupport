@@ -29,7 +29,10 @@ const Chatbox = () => {
   return (
     <Box className={styles.chatContainer}>
       <Box className={styles.backgroundTextContainer}>
-        <Typography className={styles.backgroundText}>Support.ai</Typography>
+          <Typography className={styles.backgroundText}>
+            Robinhood.ai
+          </Typography>
+          <img src="/_next/static/media/robinhoodlogo.27f420a9.png" alt="Robinhood" className={styles.logo} />
       </Box>
       <Messages messages={messages} />
       <Input messages={messages} setMessages={setMessages} />

@@ -10,9 +10,12 @@ const ContentLogin = ({ email, setEmail, password, setPassword, error, handleEma
   return (
     <>
       <Box className={styles.contentContainer}>
-        <Typography className={styles.title}>
-          Support.ai
-        </Typography>
+        <Box className={styles.titleContainer}>
+          <Typography className={styles.title}>
+            Robinhood.ai
+          </Typography>
+          <img src="/_next/static/media/robinhoodlogo.27f420a9.png" alt="Robinhood" className={styles.logo} />
+        </Box>
         <LoginFields 
           email={email} 
           setEmail={setEmail} 

@@ -4,7 +4,7 @@ import styles from './footer.module.css';
 export default function Footer() {
     return (
         <Box className={styles.page}>
-            <Typography className={styles.watermark}> &copy; {new Date().getFullYear()} Alonso Peralta & Stephen Monahan. All rights reserved. </Typography>
+            <Typography className={styles.watermark}> &copy; {new Date().getFullYear()} Alonso Peralta & Stephen Monahan </Typography>
         </Box>
     );
 }
