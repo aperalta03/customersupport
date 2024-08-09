@@ -15,7 +15,7 @@ const ContentRegister = ({ email, setEmail, password, setPassword, error, handle
           <Typography className={styles.title}>
             Robinhood.ai
           </Typography>
-          <Image src="/_next/static/media/robinhoodlogo.27f420a9.png" alt="Robinhood" className={styles.logo} width={50} height={50}/>
+          <Image src="/robinhood.png" alt="Robinhood" className={styles.logo} width={50} height={50}/>
         </Box>
         <RegisterFields 
           email={email} 
